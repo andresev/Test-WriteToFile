@@ -41,10 +41,11 @@ class LogFileView: ObservableObject {
     
     func readFile() -> Void {
         print("Reading File:")
-        let url = self.getDocumentsDirectory().appendingPathComponent("log-\(logArr[fileNum-1]).txt")
-        
+//        let url = self.getDocumentsDirectory().appendingPathComponent("log-\(logArr[fileNum-1]).txt")
+        let url = self.getDocumentsDirectory().appendingPathComponent("log-1.txt")
+
         do {
-            self.getAllFiles()
+//            self.getAllFiles()
          // Get the saved data
          let savedData = try Data(contentsOf: url)
          // Convert the data back into a string
@@ -54,6 +55,24 @@ class LogFileView: ObservableObject {
         } catch {
          // Catch any errors
          print("Unable to read file")
+        }
+    }
+    
+    func writeToExistingFile() -> Void {
+        let fileURL = getDocumentsDirectory().appendingPathComponent("log-1.txt")
+        let str = "\nID: New Line Created."
+        
+        do {
+            let handle = try FileHandle(forWritingTo: fileURL)
+            //Writes to end of file.
+            handle.seekToEndOfFile()
+            //Writes content to file.
+            handle.write(str.data(using: .utf8)!)
+            //close file.
+            handle.closeFile()
+            print("New content added to file.")
+        } catch {
+            print(error)
         }
     }
     
@@ -88,11 +107,11 @@ class LogFileView: ObservableObject {
     }
     
     func deleteFile() -> Void {
-        let file = self.getDocumentsDirectory().appendingPathComponent("log-4.txt")
+        let file = self.getDocumentsDirectory().appendingPathComponent("log-1.txt")
         
         do {
             try FileManager.default.removeItem(at: file)
-            logArr.remove(at: 4)
+            logArr.remove(at: 1)
             print("File 'log-4' has been deleted.")
         } catch {
             print(error)
@@ -126,6 +145,11 @@ struct ContentView: View {
             .onTapGesture {
                 logView.deleteFile()
             }
+        Text("Add text to File")
+            .onTapGesture {
+                logView.writeToExistingFile()
+            }
+            .frame(height: 40)
         HStack {
             VStack(alignment: .leading) {
                 List {
