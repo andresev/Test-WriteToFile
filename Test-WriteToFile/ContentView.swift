@@ -25,7 +25,7 @@ class LogFileView: ObservableObject {
         logArr.append(logArr.count)
 
         let str = "ID: 12345-\(fileNum)"
-        let url = self.getDocumentsDirectory().appendingPathComponent("log-\(fileNum).txt")
+        let url = self.getDocumentsDirectory().appendingPathComponent("log-\(fileNum).txt") // File to be created and written
 
         do {
             print("Write to new File:")
@@ -41,25 +41,23 @@ class LogFileView: ObservableObject {
     
     func readFile() -> Void {
         print("Reading File:")
-//        let url = self.getDocumentsDirectory().appendingPathComponent("log-\(logArr[fileNum-1]).txt")
-        let url = self.getDocumentsDirectory().appendingPathComponent("log-1.txt")
+        let url = self.getDocumentsDirectory().appendingPathComponent("log-1.txt") // File to read
 
         do {
-//            self.getAllFiles()
-         // Get the saved data
-         let savedData = try Data(contentsOf: url)
-         // Convert the data back into a string
-         if let savedString = String(data: savedData, encoding: .utf8) {
-            print(savedString)
-         }
+            // Get the saved data
+            let savedData = try Data(contentsOf: url)
+            // Convert the data back into a string
+            if let savedString = String(data: savedData, encoding: .utf8) {
+                print(savedString)
+            }
         } catch {
-         // Catch any errors
-         print("Unable to read file")
+            // Catch any errors
+            print(error, "Unable to read file")
         }
     }
     
     func writeToExistingFile() -> Void {
-        let fileURL = getDocumentsDirectory().appendingPathComponent("log-1.txt")
+        let fileURL = getDocumentsDirectory().appendingPathComponent("log-1.txt") // File to be written with new text/string
         let str = "\nID: New Line Created."
         
         do {
@@ -76,9 +74,9 @@ class LogFileView: ObservableObject {
         }
     }
     
-    func getAllFiles() -> Void {
+    func ReadAllFiles() -> Void {
         do {
-            let items = try FileManager.default.contentsOfDirectory(at: self.getDocumentsDirectory(), includingPropertiesForKeys: nil)
+            let items = try FileManager.default.contentsOfDirectory(at: self.getDocumentsDirectory(), includingPropertiesForKeys: nil) // Read files in documents directory
             print(items.count)
             for item in items {
                 print("Found \(item.lastPathComponent)")
@@ -90,7 +88,7 @@ class LogFileView: ObservableObject {
     
     func deleteAllFiles() -> Void {
         do {
-            let fileURLs = try FileManager.default.contentsOfDirectory(at: self.getDocumentsDirectory(), includingPropertiesForKeys: nil)
+            let fileURLs = try FileManager.default.contentsOfDirectory(at: self.getDocumentsDirectory(), includingPropertiesForKeys: nil) // All files to be deleted in folder
             
             for fileURL in fileURLs {
                 try FileManager.default.removeItem(at: fileURL)
@@ -107,16 +105,17 @@ class LogFileView: ObservableObject {
     }
     
     func deleteFile() -> Void {
-        let file = self.getDocumentsDirectory().appendingPathComponent("log-1.txt")
+        let file = self.getDocumentsDirectory().appendingPathComponent("log-1.txt") // Single file to be deleted
         
         do {
             try FileManager.default.removeItem(at: file)
             logArr.remove(at: 1)
-            print("File 'log-4' has been deleted.")
+            print("File 'log-1' has been deleted.")
         } catch {
             print(error)
         }
     }
+
 }
 
 struct ContentView: View {
@@ -130,6 +129,11 @@ struct ContentView: View {
             }
             .frame(width: 200, height: 40)
             .padding(10)
+        Text("Read all Files")
+            .onTapGesture {
+                logView.ReadAllFiles()
+            }
+            .frame(height: 40)
         Text("Read file")
             .onTapGesture {
                 logView.readFile()

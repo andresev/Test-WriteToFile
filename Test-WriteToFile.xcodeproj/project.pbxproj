@@ -11,6 +11,7 @@
 		4141D1A328EDD2DE00557840 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4141D1A228EDD2DE00557840 /* ContentView.swift */; };
 		4141D1A528EDD2DF00557840 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4141D1A428EDD2DF00557840 /* Assets.xcassets */; };
 		4141D1A828EDD2DF00557840 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4141D1A728EDD2DF00557840 /* Preview Assets.xcassets */; };
+		41C12E3228F4A7C7002409F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41C12E3128F4A7C7002409F0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4141D1A228EDD2DE00557840 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4141D1A428EDD2DF00557840 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4141D1A728EDD2DF00557840 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		41C12E3128F4A7C7002409F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		4141D19F28EDD2DE00557840 /* Test-WriteToFile */ = {
 			isa = PBXGroup;
 			children = (
+				41C12E3128F4A7C7002409F0 /* GoogleService-Info.plist */,
 				4141D1A028EDD2DE00557840 /* Test_WriteToFileApp.swift */,
 				4141D1A228EDD2DE00557840 /* ContentView.swift */,
 				4141D1A428EDD2DF00557840 /* Assets.xcassets */,
@@ -83,6 +86,8 @@
 			dependencies = (
 			);
 			name = "Test-WriteToFile";
+			packageProductDependencies = (
+			);
 			productName = "Test-WriteToFile";
 			productReference = 4141D19D28EDD2DE00557840 /* Test-WriteToFile.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,8 @@
 				Base,
 			);
 			mainGroup = 4141D19428EDD2DD00557840;
+			packageReferences = (
+			);
 			productRefGroup = 4141D19E28EDD2DE00557840 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +134,7 @@
 			files = (
 				4141D1A828EDD2DF00557840 /* Preview Assets.xcassets in Resources */,
 				4141D1A528EDD2DF00557840 /* Assets.xcassets in Resources */,
+				41C12E3228F4A7C7002409F0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
